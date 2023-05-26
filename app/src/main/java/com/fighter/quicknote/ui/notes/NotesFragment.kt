@@ -1,19 +1,12 @@
 package com.fighter.quicknote.ui.notes
 
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.fighter.quicknote.R
+import com.fighter.quicknote.databinding.FragmentNotesBinding
+import com.fighter.quicknote.ui.base.BaseFragment
 
-class NotesFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_notes, container, false)
-    }
+class NotesFragment : BaseFragment<FragmentNotesBinding>() {
+    override val layoutIdFragment: Int = R.layout.fragment_notes
+    override val viewModel: NoteViewModel by viewModels()
 
 }
