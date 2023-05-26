@@ -1,13 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="item"
+            type="com.fighter.quicknote.data.local.NoteEntity" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:strokeWidth="0dp"
+        app:cardElevation="@dimen/elevation_small"
+        android:layout_margin="@dimen/spacing_tiny"
+        >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingVertical="@dimen/spacing_small"
+            android:paddingHorizontal="@dimen/spacing_medium"
+            >
+
+            <TextView
+                android:id="@+id/text_note_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{item.content}"
+                tool:text="Note Title"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:textSize="@dimen/text_large"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+            <TextView
+                android:id="@+id/text_note_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@{item.content}"
+                android:maxLines="5"
+                android:ellipsize="end"
+                android:layout_marginEnd="@dimen/spacing_medium"
+                android:textSize="@dimen/text_medium"
+                android:layout_marginTop="@dimen/spacing_small"
+                tool:text="This is note description or content as you like"
+                app:layout_constraintTop_toBottomOf="@+id/text_note_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+            <TextView
+                android:id="@+id/text_note_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tool:text="24/8/1998"
+                android:textSize="@dimen/text_small"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:text="@{item.date.toString()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_note_content"
+                android:drawablePadding="@dimen/spacing_small"
+                android:gravity="center"
+                app:drawableEndCompat="@drawable/icon_date" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
 </layout>
