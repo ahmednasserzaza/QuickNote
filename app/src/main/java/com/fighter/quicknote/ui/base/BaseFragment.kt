@@ -13,6 +13,7 @@ import com.fighter.quicknote.BR
 abstract class BaseFragment<VDB : ViewDataBinding> : Fragment() {
     abstract val layoutIdFragment: Int
     abstract val viewModel: ViewModel
+    abstract val TAG: String
 
     private lateinit var _binding: VDB
     protected val binding: VDB
@@ -30,5 +31,7 @@ abstract class BaseFragment<VDB : ViewDataBinding> : Fragment() {
             return root
         }
     }
+
+    protected open fun setup() {}
 
 }

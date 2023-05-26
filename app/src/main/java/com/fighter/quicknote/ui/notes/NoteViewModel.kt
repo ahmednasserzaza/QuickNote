@@ -13,7 +13,7 @@ import java.util.Date
 import javax.inject.Inject
 
 class NoteViewModel @Inject constructor(private val noteRepository: NoteRepository) :
-    BaseViewModel() {
+    BaseViewModel() , NoteInteractionListener {
 
     val newNoteTitle = MutableLiveData<String>()
     val newNoteContent = MutableLiveData<String>()
@@ -46,6 +46,10 @@ class NoteViewModel @Inject constructor(private val noteRepository: NoteReposito
                 }
             }
         }
+    }
+
+    override fun onClickNote(note: NoteEntity) {
+
     }
 
 
