@@ -7,6 +7,9 @@
         <variable
             name="item"
             type="com.fighter.quicknote.data.local.NoteEntity" />
+        <variable
+            name="listener"
+            type="com.fighter.quicknote.ui.notes.NoteInteractionListener" />
     </data>
 
 
