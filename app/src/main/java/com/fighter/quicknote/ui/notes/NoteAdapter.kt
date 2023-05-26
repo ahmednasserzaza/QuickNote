@@ -9,7 +9,7 @@ import com.fighter.quicknote.ui.base.BaseInteractionListener
 class NoteAdapter(
     notes: List<NoteEntity>,
     listener: NoteInteractionListener
-) : BaseAdapter<NoteEntity>(notes, listener) {
+) : BaseAdapter<NoteEntity>(notes , listener) {
     override val layoutID: Int = R.layout.item_note
 }
 

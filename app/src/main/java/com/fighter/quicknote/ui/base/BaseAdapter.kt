@@ -10,7 +10,7 @@ import com.fighter.quicknote.BR
 
 interface BaseInteractionListener
 abstract class BaseAdapter<T>(
-    private var items: List<T>,
+    private var items:List<T>,
     private val listener: BaseInteractionListener,
 ) : RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
 
