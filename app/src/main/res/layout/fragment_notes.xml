@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="viewModel"
+            type="com.fighter.quicknote.ui.notes.NoteViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
