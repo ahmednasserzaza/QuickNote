@@ -18,6 +18,7 @@
         android:layout_height="wrap_content"
         app:strokeWidth="0dp"
         app:cardElevation="@dimen/elevation_small"
+        android:onClick="@{() -> listener.onClickNote(item)}"
         android:layout_margin="@dimen/spacing_tiny"
         >
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +32,7 @@
                 android:id="@+id/text_note_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@{item.content}"
+                android:text="@{item.title}"
                 tool:text="Note Title"
                 android:maxLines="1"
                 android:ellipsize="end"
