@@ -11,7 +11,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 import javax.inject.Inject
 
 @HiltViewModel
@@ -45,7 +47,9 @@ class NoteViewModel @Inject constructor(private val noteRepository: NoteReposito
         val description = newNoteContent.value?.trim()
 
         if (title != null && description != null) {
-            val newNote = NoteEntity(title = title, content = description, date = Date())
+            val dateFormat = SimpleDateFormat("dd/M/yyyy", Locale.getDefault())
+            val currentDate = dateFormat.format(Date())
+            val newNote = NoteEntity(title = title, content = description, currentDate = currentDate)
 
             viewModelScope.launch {
                 noteRepository.insertNewNote(newNote)

@@ -64,7 +64,7 @@
                 tool:text="24/8/1998"
                 android:textSize="@dimen/text_small"
                 android:layout_marginTop="@dimen/spacing_small"
-                android:text="@{item.date.toString()}"
+                android:text="@{item.currentDate}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_note_content"
                 android:drawablePadding="@dimen/spacing_small"
