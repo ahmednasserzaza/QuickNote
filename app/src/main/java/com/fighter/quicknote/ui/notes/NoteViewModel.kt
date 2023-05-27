@@ -20,7 +20,6 @@ class NoteViewModel @Inject constructor(private val noteRepository: NoteReposito
 
     val newNoteTitle = MutableLiveData<String>()
     val newNoteContent = MutableLiveData<String>()
-
     val searchTerm = MutableStateFlow("")
 
     private val _notes = MutableLiveData<List<NoteEntity>>()
