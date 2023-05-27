@@ -28,6 +28,7 @@ abstract class BaseFragment<VDB : ViewDataBinding> : Fragment() {
         _binding.apply {
             lifecycleOwner = viewLifecycleOwner
             setVariable(BR.viewModel, viewModel)
+            setup()
             return root
         }
     }

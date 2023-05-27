@@ -29,39 +29,46 @@ class NoteViewModel @Inject constructor(private val noteRepository: NoteReposito
 
     init {
         getAllNotes()
+        filterNotes()
     }
-
 
     private fun getAllNotes() {
         viewModelScope.launch {
             noteRepository.getAllNotes().collect {
                 _notes.postValue(it)
-                Log.e("My data" , "${notes.value}")
+                Log.e("My data", "${notes.value}")
             }
         }
     }
 
     fun addNote() {
-        viewModelScope.launch {
-            newNoteTitle.value?.let { title ->
-                newNoteContent.value?.let { content ->
-                    noteRepository.insertNewNote(
-                        NoteEntity(
-                            title = title,
-                            content = content,
-                            date = Date()
-                        )
-                    )
-                    newNoteTitle.value = ""
-                    newNoteContent.value = ""
-                }
+        val title = newNoteTitle.value?.trim()
+        val description = newNoteContent.value?.trim()
+
+        if (title != null && description != null) {
+            val newNote = NoteEntity(title = title, content = description, date = Date())
+
+            viewModelScope.launch {
+                noteRepository.insertNewNote(newNote)
+                clearNoteFields()
             }
         }
     }
 
-    override fun onClickNote(note: NoteEntity) {
+    private fun filterNotes() {
+        viewModelScope.launch {
+            searchTerm.debounce(1000).collect {
+                _notes.postValue(noteRepository.getFilteredNotes(it))
+            }
+        }
 
     }
 
+    private fun clearNoteFields() {
+        newNoteTitle.value = ""
+        newNoteContent.value = ""
+    }
+
+    override fun onClickNote(note: NoteEntity) {}
 
 }

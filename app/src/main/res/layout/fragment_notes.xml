@@ -57,6 +57,7 @@
             android:drawableStart="@drawable/icon_search"
             android:drawablePadding="@dimen/spacing_small"
             android:hint="@string/search"
+            android:text="@={viewModel.searchTerm}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_note_content" />

@@ -22,6 +22,6 @@ interface NoteDao {
     @Query("SELECT * FROM NOTE_TABLE ORDER BY id DESC")
     fun getAllNotes(): Flow<List<NoteEntity>>
 
-    @Query("SELECT * FROM NOTE_TABLE WHERE content LIKE :searchTerm ORDER BY id DESC")
+    @Query("SELECT * FROM NOTE_TABLE WHERE title LIKE '%' || :searchTerm || '%' ORDER BY id DESC")
     suspend fun getFilteredNotes(searchTerm: String): List<NoteEntity>
 }

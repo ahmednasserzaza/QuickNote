@@ -1,6 +1,5 @@
 package com.fighter.quicknote.data.repositories
 
-import android.util.Log
 import com.fighter.quicknote.data.local.NoteDao
 import com.fighter.quicknote.data.local.NoteEntity
 import kotlinx.coroutines.flow.Flow
@@ -10,12 +9,10 @@ class NoteRepositoryImp @Inject constructor(private val dao: NoteDao) : NoteRepo
 
     override suspend fun insertNewNote(note: NoteEntity) = dao.insertNote(note)
 
-    override fun getAllNotes():Flow<List<NoteEntity>>{
-        Log.e("My data" , "${dao.getAllNotes()}")
+    override fun getAllNotes(): Flow<List<NoteEntity>> {
         return dao.getAllNotes()
-
     }
 
     override suspend fun getFilteredNotes(searchTerm: String) =
-        dao.getFilteredNotes("%$searchTerm%")
+        dao.getFilteredNotes(searchTerm)
 }
